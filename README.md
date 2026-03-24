@@ -118,39 +118,3 @@ The project is under active development, with plans to incorporate tools for a w
 
 Each new attack vector will likely have its own dedicated directory and associated README for detailed documentation.
 
-## Contributing
-
-Contributions to `PortSwigger_Labs` are welcome. If you have developed a new tool or found a way to improve an existing one, please consider submitting a pull request.
-
-1.  Fork the repository.
-2.  Create a new branch for your feature or bug fix.
-3.  Make your changes and ensure they are well-documented.
-4.  Submit a pull request with a clear description of your changes.
-
-Please ensure that any new code adheres to the established coding standards and includes appropriate documentation.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Configuration and Environment Variables
-
-Currently, this project does not rely on specific environment variables for configuration. Tool parameters are passed directly via command-line arguments. As the project evolves, configuration files or environment variables may be introduced to manage settings such as API keys, proxy configurations, or default target parameters.
-
-## Acknowledgments
-
-*   **PortSwigger Web Security Academy:** The foundational source of the labs and learning material that inspired this project.
-*   **The Python Community:** For the extensive libraries and resources that enable the development of these tools.
-
-## API Documentation
-
-This project consists of standalone scripts rather than a formal API. Each script can be executed independently from the command line. Specific usage instructions and required arguments for each script are detailed in the "Usage" section.
-```
-
----
-
-<p align="center">
-  <a href="https://readmeforge.app?utm_source=badge">
-    <img src="https://readmeforge.app/badge.svg" alt="Made with ReadmeForge" height="20">
-  </a>
-</p>
