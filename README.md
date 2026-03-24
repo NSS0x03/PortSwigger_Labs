@@ -50,13 +50,12 @@ This script can be used to brute-force data using time-based blind SQL injection
 
 ```bash
 python SQLi/Time_Brute.py <target_url> <parameter_name> <payload_template> <injection_point>
-
+```
 
 *   `<target_url>`: The URL of the vulnerable application.
 *   `<parameter_name>`: The name of the parameter to inject into.
 *   `<payload_template>`: A template for the SQLi payload (e.g., `UNION SELECT null, @@version -- `).
 *   `<injection_point>`: The position within the query where the injection should occur.
-```
 
 #### Error-Based SQL Injection
 
