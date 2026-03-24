@@ -56,6 +56,7 @@ python SQLi/Time_Brute.py <target_url> <parameter_name> <payload_template> <inje
 *   `<parameter_name>`: The name of the parameter to inject into.
 *   `<payload_template>`: A template for the SQLi payload (e.g., `UNION SELECT null, @@version -- `).
 *   `<injection_point>`: The position within the query where the injection should occur.
+```
 
 #### Error-Based SQL Injection
 
