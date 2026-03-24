@@ -1,4 +1,4 @@
-```markdown
+
 # PortSwigger_Labs: Automated Web Security Exploitation Tools
 
 This repository houses a collection of Python scripts designed to automate the execution of various web security attacks, primarily targeting vulnerabilities encountered in the PortSwigger Web Security Academy. The project aims to provide a programmatic approach to identifying and exploiting common web application weaknesses, facilitating learning and practice in web penetration testing.
@@ -50,7 +50,7 @@ This script can be used to brute-force data using time-based blind SQL injection
 
 ```bash
 python SQLi/Time_Brute.py <target_url> <parameter_name> <payload_template> <injection_point>
-```
+
 
 *   `<target_url>`: The URL of the vulnerable application.
 *   `<parameter_name>`: The name of the parameter to inject into.
