@@ -1,114 +1,150 @@
 ```markdown
-# PortSwigger_Labs
+# PortSwigger_Labs: Automated Web Security Exploitation Tools
 
-This repository contains Python scripts designed to automate various web penetration testing techniques, with a particular focus on challenges found in the PortSwigger Web Security Academy. The project aims to streamline the process of identifying and exploiting common web vulnerabilities.
+This repository houses a collection of Python scripts designed to automate the execution of various web security attacks, primarily targeting vulnerabilities encountered in the PortSwigger Web Security Academy. The project aims to provide a programmatic approach to identifying and exploiting common web application weaknesses, facilitating learning and practice in web penetration testing.
 
 ## Badges
 
-[![Python Language](https://img.shields.io/badge/language-Python-blue.svg)](https://www.python.org/)
-[![GitHub License](https://img.shields.io/github/license/NSS0x03/PortSwigger_Labs.yml)](https://github.com/NSS0x03/PortSwigger_Labs/blob/main/LICENSE)
+[![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Overview
+
+The `PortSwigger_Labs` repository is structured to provide specialized tools for different categories of web vulnerabilities. While currently focusing on SQL Injection and Authentication, the architecture is designed for extensibility to include other attack vectors such as Server-Side Request Forgery (SSRF), Cross-Site Scripting (XSS), and more as development progresses. Each attack category is organized into its own directory, promoting clarity and maintainability.
 
 ## Features
 
-This project provides automated solutions for a variety of web security vulnerabilities, including but not limited to:
-
-*   **SQL Injection:**
-    *   Blind SQL Injection (Time-based and Boolean-based brute-forcing)
-    *   Error-based SQL Injection
-*   **Authentication Bypass:** Scripts to test and potentially bypass authentication mechanisms.
-*   **Cross-Site Scripting (XSS):** Tools to identify and exploit XSS vulnerabilities.
-*   **Server-Side Request Forgery (SSRF):** (Future additions planned)
-*   **Access Control Issues:** Scripts to test for broken access control.
-*   **Cross-Site Request Forgery (CSRF):** (Future additions planned)
-*   **Utility Scripts:** Helper functions for tasks such as reading ASCII characters and extracting flags.
+*   **Automated Blind SQL Injection:** Scripts designed to automate the detection and exploitation of blind SQL injection vulnerabilities, including time-based and error-based techniques.
+*   **Authentication Bypass:** Tools to assist in testing and potentially bypassing authentication mechanisms.
+*   **Modular Design:** The repository is organized into directories based on attack types, allowing for easy navigation and the addition of new attack modules.
+*   **Extensible Architecture:** Designed to accommodate future additions of other web vulnerability classes (e.g., SSRF, XSS, CSRF, Access Control).
+*   **Utility Functions:** Includes helper scripts for common tasks such as ASCII art rendering and flag extraction, valuable in Capture The Flag (CTF) scenarios.
 
 ## Installation
 
-To get started with this project, clone the repository and install any necessary Python dependencies.
+To get started with the `PortSwigger_Labs` tools, please follow these steps:
 
-```bash
-git clone https://github.com/NSS0x03/PortSwigger_Labs.git
-cd PortSwigger_Labs
-# No specific dependencies are required beyond standard Python libraries for the core scripts.
-# If any external libraries are added in the future, a requirements.txt file will be provided.
-```
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/NSS0x03/PortSwigger_Labs.git
+    cd PortSwigger_Labs
+    ```
+
+2.  **Ensure Python 3 is installed:**
+    This project requires Python 3.9 or higher. You can download it from [python.org](https://www.python.org/downloads/).
+
+3.  **Install dependencies (if any):**
+    Currently, the project has no external Python dependencies beyond the standard library. If future modules require specific libraries, a `requirements.txt` file will be added.
 
 ## Usage
 
-Each vulnerability type is organized into its own directory. Navigate to the relevant directory and execute the Python scripts.
+The tools are designed to be run from the command line. Each subdirectory contains specific scripts for particular attack types.
 
-### Example: Blind SQL Injection (Time-Based)
+### SQL Injection Examples
 
-To perform a time-based blind SQL injection attack, navigate to the `SQLi` directory and run `Time_Brute.py`.
+The `SQLi` directory contains scripts for automating SQL injection attacks.
+
+#### Blind SQL Injection (Time-Based)
+
+This script can be used to brute-force data using time-based blind SQL injection.
 
 ```bash
-cd SQLi
-python Time_Brute.py <target_url> <parameter_name> <payload_file>
+python SQLi/Time_Brute.py <target_url> <parameter_name> <payload_template> <injection_point>
 ```
 
 *   `<target_url>`: The URL of the vulnerable application.
-*   `<parameter_name>`: The name of the parameter to test for SQL injection.
-*   `<payload_file>`: The path to a file containing SQL injection payloads.
+*   `<parameter_name>`: The name of the parameter to inject into.
+*   `<payload_template>`: A template for the SQLi payload (e.g., `UNION SELECT null, @@version -- `).
+*   `<injection_point>`: The position within the query where the injection should occur.
 
-### Example: Error-Based SQL Injection
+#### Error-Based SQL Injection
 
-To perform an error-based SQL injection attack, navigate to the `SQLi` directory and run `Error_Brute.py`.
+Scripts like `Error_Brute.py` and `Error_Brute2.py` are designed to leverage error messages returned by the database to extract information.
 
 ```bash
-cd SQLi
-python Error_Brute.py <target_url> <parameter_name> <payload_file>
+python SQLi/Error_Brute.py <target_url> <parameter_name> <error_based_payload>
 ```
 
 *   `<target_url>`: The URL of the vulnerable application.
-*   `<parameter_name>`: The name of the parameter to test for SQL injection.
-*   `<payload_file>`: The path to a file containing SQL injection payloads.
+*   `<parameter_name>`: The name of the parameter to inject into.
+*   `<error_based_payload>`: A payload designed to trigger specific database errors for information disclosure.
 
-### Authentication Bypass Example
+### Authentication Examples
 
-Navigate to the `Authentication` directory and execute `auth.py` (if applicable, assuming a script named `auth.py` exists or will be added).
+The `Authentication` directory may contain scripts or notes related to bypassing or testing authentication mechanisms. Please refer to individual files within this directory for specific usage instructions.
+
+### CTF Utilities
+
+The `CTF_Utils` directory contains helper scripts.
+
+#### Flag Extractor
+
+This script can assist in extracting flags from output.
 
 ```bash
-cd Authentication
-python auth.py <target_url> <username_field> <password_field> <payload_file>
+python CTF_Utils/Flag_Extractor.py <input_file>
 ```
 
-*   `<target_url>`: The URL of the login page.
-*   `<username_field>`: The name of the username input field.
-*   `<password_field>`: The name of the password input field.
-*   `<payload_file>`: The path to a file containing authentication bypass payloads.
+*   `<input_file>`: The file containing the output from which to extract flags.
 
-**Note:** Specific command-line arguments and script functionalities may vary. Please refer to individual script's docstrings or associated `README.md` files for detailed usage instructions.
+## Directory Structure
+
+```
+.
+├── Authentication/
+│   └── auth.txt              # Notes or scripts related to authentication
+├── CTF_Utils/
+│   ├── ASCII_reader.py       # Utility for rendering ASCII art
+│   ├── Flag_Extractor.py     # Script to extract flags from text
+│   └── README.md             # README for CTF Utilities
+├── SQLi/
+│   ├── Blind_Brute2.py       # Advanced blind SQLi brute-forcing script
+│   ├── Error_Brute.py        # Error-based SQLi brute-forcing script
+│   ├── Error_Brute2.py       # Alternative error-based SQLi script
+│   └── Time_Brute.py         # Time-based blind SQLi brute-forcing script
+├── README.md                 # Main README for the repository
+└── ...                       # Other potential attack modules and utilities
+```
+
+## Future Development
+
+The project is under active development, with plans to incorporate tools for a wider range of web vulnerabilities, including:
+
+*   Server-Side Request Forgery (SSRF)
+*   Cross-Site Scripting (XSS)
+*   Cross-Site Request Forgery (CSRF)
+*   Access Control vulnerabilities
+*   And more...
+
+Each new attack vector will likely have its own dedicated directory and associated README for detailed documentation.
 
 ## Contributing
 
-Contributions are welcome! If you would like to contribute to this project, please follow these guidelines:
+Contributions to `PortSwigger_Labs` are welcome. If you have developed a new tool or found a way to improve an existing one, please consider submitting a pull request.
 
-1.  **Fork the repository.**
-2.  **Create a new branch** for your feature or bug fix (`git checkout -b feature/your-feature-name`).
-3.  **Make your changes** and ensure they are well-documented.
-4.  **Add unit tests** for any new functionality.
-5.  **Commit your changes** (`git commit -m 'Add some feature'`).
-6.  **Push to the branch** (`git push origin feature/your-feature-name`).
-7.  **Open a Pull Request.**
+1.  Fork the repository.
+2.  Create a new branch for your feature or bug fix.
+3.  Make your changes and ensure they are well-documented.
+4.  Submit a pull request with a clear description of your changes.
 
-Please ensure your code adheres to Python best practices and coding standards.
+Please ensure that any new code adheres to the established coding standards and includes appropriate documentation.
 
 ## License
 
-This project is not currently under any specified license.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Configuration Options and Environment Variables
+## Configuration and Environment Variables
 
-This project primarily relies on command-line arguments for configuration. As the project evolves, specific configuration files or environment variables might be introduced for more complex setups. Please refer to individual script documentation for current configuration needs.
+Currently, this project does not rely on specific environment variables for configuration. Tool parameters are passed directly via command-line arguments. As the project evolves, configuration files or environment variables may be introduced to manage settings such as API keys, proxy configurations, or default target parameters.
 
 ## Acknowledgments
 
-*   **PortSwigger:** For providing the Web Security Academy, which serves as the primary inspiration and testing ground for these scripts.
-*   **The Python Community:** For the extensive libraries and resources that facilitate the development of these tools.
+*   **PortSwigger Web Security Academy:** The foundational source of the labs and learning material that inspired this project.
+*   **The Python Community:** For the extensive libraries and resources that enable the development of these tools.
 
 ## API Documentation
 
-This project is not designed as a service with a public API. The Python scripts are intended for direct execution. For details on individual script functionalities, please refer to their respective docstrings or dedicated `README.md` files within subdirectories.
+This project consists of standalone scripts rather than a formal API. Each script can be executed independently from the command line. Specific usage instructions and required arguments for each script are detailed in the "Usage" section.
 ```
 
 ---
